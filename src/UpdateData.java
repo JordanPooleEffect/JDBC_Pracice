@@ -5,17 +5,17 @@ public class UpdateData {
     public static void main(String[] args) {
         try (Connection c = MySQLConnection.getConnection();
              PreparedStatement statement = c.prepareStatement(
-                     "UPDATE users SET name = ?, email = ? WHERE id = ?"
+                     "UPDATE users SET name = ?, email = ?, id = ? WHERE id = ?"
              )) {
             String name = "Zedric Marc Tabinas";
             String email = "zedricmarc.tabinas@cit.edu";
-            int id = 5;
+            int changeId = 4;
+            int id = 7;
 
             statement.setString(1, name);
             statement.setString(2, email);
-            statement.setInt(3, id);
-
-
+            statement.setInt(3, changeId);
+            statement.setInt(4, id);
 
             int rows = statement.executeUpdate();
 
